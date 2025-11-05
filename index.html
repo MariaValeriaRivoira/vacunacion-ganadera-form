@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Carga de documentación – Vacunación Ganadera</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <main class="container">
+    <form id="vacunacion-form" class="card" enctype="multipart/form-data" novalidate>
+      <h1>Carga de documentación –<br/> Vacunación Ganadera</h1>
+
+      <div class="field">
+        <label for="nombre">Nombre y apellido <span aria-hidden="true">*</span></label>
+        <input type="text" id="nombre" name="nombre" placeholder="Ej.: Juan Pérez" required />
+        <small class="error" data-for="nombre"></small>
+      </div>
+
+      <div class="field">
+        <label for="telefono">Teléfono <span aria-hidden="true">*</span></label>
+        <input type="tel" id="telefono" name="telefono" placeholder="Ej.: 11 2345-6789" required />
+        <small class="error" data-for="telefono"></small>
+      </div>
+
+      <div class="field">
+        <label for="correo">Correo electrónico (opcional)</label>
+        <input type="email" id="correo" name="correo" placeholder="tu@correo.com" />
+        <small class="error" data-for="correo"></small>
+      </div>
+
+      <div class="field">
+        <label for="documento">Adjuntar documento <span aria-hidden="true">*</span></label>
+        <input type="file" id="documento" name="documento" accept=".pdf,.jpg,.jpeg,.png,.doc,.docx" required />
+        <small class="hint">Formatos aceptados: PDF, JPG/PNG, DOC/DOCX (máx. 10&nbsp;MB)</small>
+        <small class="error" data-for="documento"></small>
+      </div>
+
+      <button type="submit" class="btn" id="submitBtn">Enviar documentación</button>
+
+      <p id="status" role="status" aria-live="polite" class="status"></p>
+    </form>
+    <footer class="footer">
+      <p>© <span id="year"></span> Delegación Municipal de Bayauca</p>
+    </footer>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
