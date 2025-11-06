@@ -43,6 +43,7 @@ app.post('/api/enviar', upload.single('documento'), async (req, res) => {
         pass: process.env.SMTP_PASS
       }
     });
+    
 
     const subject = `Acta de vacunacion de ${nombre}`;
     const text = `Nombre: ${nombre}\nTeléfono: ${telefono}\nCorreo: ${correo || '-'}\n`;
@@ -65,6 +66,13 @@ app.post('/api/enviar', upload.single('documento'), async (req, res) => {
     });
 
     res.json({ ok: true, message: 'Enviado', id: info.messageId });
+    try {
+  const info = await transporter.sendMail(mailOptions);
+  res.json({ ok: true, message: 'Enviado', id: info.messageId });
+} catch (err) {
+  console.error('❌ Error detallado:', err);
+  res.status(500).json({ message: `Error al enviar el correo: ${err.message}` });
+}
   } catch (err){
     console.error(err);
     res.status(500).json({ message: 'Error al enviar el correo.' });
